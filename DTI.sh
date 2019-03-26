@@ -25,6 +25,7 @@
 # Histórico:
 #
 #	- version 1.0 - Construido toda a aplicação contendo operações GTK com Zenity.
+#	- version 1.1 - Implementado correção no código da função de instalação genérica.
 #
 #
 #
