@@ -7,9 +7,8 @@
 # 	- Telefone:   +55 61 995175170
 # 	- Manutenção: Luciano Brito
 #
-# 	- Dicas zenity_o_dialogo_--formsDicas do zenity: http://www.dicas-l.com.br/arquivo/zenity_o_dialogo_--forms.php#.XIq3R4Vv8_4
 #
-# -------------------------------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------------------------------#
 #  Descrição: DTI é uma ferramenta para facilitar a instalação de pacotes
 #  voltados ao desenvolvimento de software.
 #
@@ -20,8 +19,8 @@
 #
 #	Em alguns sistemas será possivel execultar apenas dando dois cliques com o botão
 #   esquerdo do mouse, bastando apenas dar permisssão de execução previamemte.
-#   
-# -------------------------------------------------------------------------------------------------- #
+#
+# ---------------------------------------------------------------------------------------------------#
 #
 # Histórico:
 #
@@ -29,12 +28,12 @@
 #
 #
 #
-# -------------------------------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------------------------------#
 # Testado em:
 #   - bash 4.4.19
-# -------------------------------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------------------------------#
 #
-# -------------------------------------------- VARIÁVEIS ------------------------------------------- #
+# -------------------------------------------- VARIÁVEIS --------------------------------------------#
 # Nome do Sistema:
 	SYSTEM=$(lsb_release -i | awk {'print $3'})
 #
@@ -52,7 +51,7 @@
 	CONTROLLER=0 		# Controlador do Menu Principal?
 #
 #
-# --------------------------------------------- FUNÇÕES ------------------------------------------- #
+# --------------------------------------------- FUNÇÕES ---------------------------------------------#
 # Armazenamento de senha?
 #
 #
@@ -109,7 +108,7 @@ function SnapFlatpakSuport() {
 }
 
 
-#------------------------------------------- WELCOME --------------------------------------------#
+#------------------------------------------- WELCOME ------------------------------------------------#
 # Função padrão de boas vindas?
 #
 #
@@ -127,7 +126,7 @@ function Welcome() {
 }
 
 
-# -------------------------------------------- ERROR --------------------------------------------#
+# -------------------------------------------- ERROR ------------------------------------------------#
 # Sistema não suportado?
 #
 # Basicamente o sistema será não suportado quando não houver uma entrada para ele
@@ -145,7 +144,7 @@ function NullOption() {
 }
 
 
-#---------------------------------------------- EXIT -------------------------------------------#
+#---------------------------------------------- EXIT ------------------------------------------------#
 # Filtro da chamada da função de saida do sistema?
 #
 function ExecutionTest() {
@@ -171,7 +170,7 @@ function Exit() {
 }
 
 
-#--------------------------------------------- MAIN MENU --------------------------------------#
+#--------------------------------------------- MAIN MENU --------------------------------------------#
 # Função principal?
 #
 # TYPE_PROGRAM é a variável que receberá o tipo de programa a ser instalado.
@@ -220,7 +219,7 @@ function ProgramMain() {
 }
 
 
-#------------------------------------- SOFTWARE INSTALATIONS -----------------------------------#
+#------------------------------------- SOFTWARE INSTALATIONS ----------------------------------------#
 # Função de Progresso de Instalação?
 #
 #
@@ -274,6 +273,8 @@ function NewInstallation(){
 }
 
 
+# Instalação Genérica?
+#
 # Função genérica de instalação de pacotes:
 #
 #  - QUANT_PARAM:		é a variável que receberá em números a quantidade de parâmetros passados para dentro desta função.
@@ -305,64 +306,71 @@ function GenericSoftwareInstall() {
 	--width=800 \
 	--height=550)"
 
-	OPTION_SOFTWARE="$OPTION_SOFTWARE|"
+	RESULTSET=$?
 
-	for (( i = 0; i < $INDEX; i++ )); do
-
-		COMPONENT="$(echo "$OPTION_SOFTWARE" | cut -d'|' -f$(($i+1)))"
-		[  "$COMPONENT" != '' ] && CHOICE[$i]="$COMPONENT"
-
-		case "${CHOICE[$i]}" in
-			'Android Studio') (Android_Studio_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Netbeans') (Netbeans_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Eclipse') (Eclipse_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'InteliJ IDEA Community') (InteliJ_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'PyCharm Community') (PyCharm_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'MonoDevelop') (MonoDevelop_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Aduino IDE') (Aduino_IDE_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Geany') Geany_Install | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'CodeBlocks') (CodeBlocks_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Atom') (Atom_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Sublime Text') (Sublime_Text_Install) | ZenityProgress "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Brackets') (Brackets_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'VS Code') (VS_Code_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Notepadqq') (Notepadqq_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Vim') (Vim_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'DBeaver Community') (DBeaver_Community_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'PostgreSQL') (PostgreSQL_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'MySQL') (MySQL_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'MariaDB') (MariaDB_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Oracle Databases') (Oracle_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'IBM DB2') (DB2_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'MongoDB') (MongoDB_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Git') (Git_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'GitKraken') (GitKraken_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'GitHub') (GitHub_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'GitLab') (GitLab_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Subversion') (SVN_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Java SDK') (Java_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Android SDK') (Android_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Python SDK') (Python_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'DotNet Core SDK') (DotNetCore_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Kotlin SDK') (Kotlin_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Node SDK') (Node_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Chrome') (Chrome_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Chromium') (Chromium_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Firefox') (Firefox_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Opera') (Opera_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Vivaldi') (Vivaldi_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Tor') (Tor_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Epiphany') (Epiphany_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Links') (Links_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'Docker') (Docker_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'VM Ware') (VM_Ware_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			'VirtualBox') (VirtualBox_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ;;
-			*) NullOption ; unset CHOICE ; break ;;
-		esac
-	done
+	if [ $RESULTSET == 0 ] && [ "$OPTION_SOFTWARE" != '' ]; then
+		OPTION_SOFTWARE="$OPTION_SOFTWARE|"
+		for (( i = 0; i < $INDEX; i++ )); do
+			COMPONENT="$(echo "$OPTION_SOFTWARE" | cut -d'|' -f$(($i+1)))"
+			[  "$COMPONENT" != '' ] && CHOICE[$i]="$COMPONENT"
+			case "${CHOICE[$i]}" in
+				'Android Studio') (Android_Studio_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ; break ;;
+				'Netbeans') (Netbeans_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ; break ;;
+				'Eclipse') (Eclipse_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ; break ;;
+				'InteliJ IDEA Community') (InteliJ_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ; break ;;
+				'PyCharm Community') (PyCharm_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'PhpStorm') (PhpStorm_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'MonoDevelop') (MonoDevelop_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Aduino IDE') (Aduino_IDE_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Geany') Geany_Install | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE ; break ;;
+				'CodeBlocks') (CodeBlocks_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Atom') (Atom_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Sublime Text') (Sublime_Text_Install) | ZenityProgress "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Brackets') (Brackets_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'VS Code') (VS_Code_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Notepadqq') (Notepadqq_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Vim') (Vim_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'DBeaver Community') (DBeaver_Community_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'PostgreSQL') (PostgreSQL_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'MySQL') (MySQL_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'MariaDB') (MariaDB_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Oracle Databases') (Oracle_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'IBM DB2') (DB2_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'MongoDB') (MongoDB_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Git') (Git_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'GitKraken') (GitKraken_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'GitHub') (GitHub_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'GitLab') (GitLab_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Subversion') (SVN_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Java SDK') (Java_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Android SDK') (Android_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Python SDK') (Python_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'DotNet Core SDK') (DotNetCore_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Kotlin SDK') (Kotlin_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Node SDK') (Node_SDK_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Chrome') (Chrome_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Chromium') (Chromium_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Firefox') (Firefox_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Opera') (Opera_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Vivaldi') (Vivaldi_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Tor') (Tor_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Epiphany') (Epiphany_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Links') (Links_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'Docker') (Docker_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'VM Ware') (VM_Ware_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				'VirtualBox') (VirtualBox_Install) | ZenityProgress "${CHOICE[$i]}" ; InstalationCheckup "${CHOICE[$i]}" ; unset CHOICE  ; break ;;
+				*) NullOption ; unset CHOICE ; break ;;
+			esac
+		done
+	else
+		Exit 1
+	fi
 }
 
-# --------------------------------------------- SUBMENUS ----------------------------------------------------#
+
+# --------------------------------------------- SUBMENUS --------------------------------------------#
+
+
 function IDEs() {
 
 	GenericSoftwareInstall \
@@ -371,86 +379,87 @@ function IDEs() {
 	3 'Eclipse' 				'IDE para Desenvolvimento em Java, PHP, Python ...' \
 	4 'InteliJ IDEA Community' 	'IDE para Desenvolvimento em Java, PHP, Python ...' \
 	5 'PyCharm Community' 		'IDE para Desenvolvimento em Python ...' \
-	6 'MonoDevelop' 			'IDE para Desenvolvimento em Visual Basic, C#, ASP.NET ...'\
-	7 'Aduino IDE'				'IDE para Desenvolvimento em Linguagem C/C++ ...' \
-	8 'Geany' 					'IDE para Desenvolvimento em Linguagem C/C++ ...' \
-	9 'CodeBlocks' 				'IDE para Desenvolvimento em Linguagem C/C++ ...' 
+	6 'PhpStorm'				'IDE para Desenvolvimento em PHP ....' \
+	7 'MonoDevelop' 			'IDE para Desenvolvimento em Visual Basic, C#, ASP.NET ...' \
+	8 'Aduino IDE'				'IDE para Desenvolvimento em Linguagem C/C++ ...' \
+	9 'Geany' 					'IDE para Desenvolvimento em Linguagem C/C++ ...' \
+	10 'CodeBlocks' 			'IDE para Desenvolvimento em Linguagem C/C++ ...' 
 }
 
 
 function EditoresCodigo(){
 
 	GenericSoftwareInstall \
-	1 'Atom' 			'Editores de Código Completo para Web e Desktop' \
-	2 'Sublime Text' 	'Editores de Código Completo para Web e Desktop' \
-	3 'Brackets' 		'Editores de Código para Web' \
-	4 'VS Code' 		'Editores de Código para Web' \
-	5 'Notepadqq' 		'Editores de Código Simples' \
-	6 'Vim' 			'Editores de Código em Modo Texto'
+	1 'Atom' 					'Editores de Código Completo para Web e Desktop' \
+	2 'Sublime Text' 			'Editores de Código Completo para Web e Desktop' \
+	3 'Brackets' 				'Editores de Código para Web' \
+	4 'VS Code' 				'Editores de Código para Web' \
+	5 'Notepadqq' 				'Editores de Código Simples' \
+	6 'Vim' 					'Editores de Código em Modo Texto'
 }
 
 
 function BancoDeDados() {
 
 	GenericSoftwareInstall \
-	1 'DBeaver Community'	'SGBD Livre Compativel com MySQL, MariaDB, PostgreSQL ...' \
-	2 'PostgreSQL' 			'Banco de Dados Relacional e SGBD PgAdmin 4' \
-	3 'MySQL' 				'Banco de Dados Relacional e SGBD MySQL-Workbench' \
-	4 'MariaDB' 			'Banco de Dados Relacional, XAMPP e SGBD MySQL-Workbench' \
-	5 'Oracle Databases' 	'Banco de Dados Relacional e SGBD Oracle' \
-	6 'IBM DB2'				'Banco de Dados Relacional e SGBD IBM' \
-	7 'MongoDB'				'Banco de Dados Orientado a Documentos, NoSQL e SGBD'
+	1 'DBeaver Community'		'SGBD Livre Compativel com MySQL, MariaDB, PostgreSQL ...' \
+	2 'PostgreSQL' 				'Banco de Dados Relacional e SGBD PgAdmin 4' \
+	3 'MySQL' 					'Banco de Dados Relacional e SGBD MySQL-Workbench' \
+	4 'MariaDB' 				'Banco de Dados Relacional, XAMPP e SGBD MySQL-Workbench' \
+	5 'Oracle Databases' 		'Banco de Dados Relacional e SGBD Oracle' \
+	6 'IBM DB2'					'Banco de Dados Relacional e SGBD IBM' \
+	7 'MongoDB'					'Banco de Dados Orientado a Documentos, NoSQL e SGBD'
 }
 
 
 function Versionadores() {
 
 	GenericSoftwareInstall \
-	1 'Git' 		'Ferramenta de Versionamento em modo texto' \
-	2 'GitKraken'	'Interface grafica para o git' \
-	3 'GitHub' 		'Versionador Remoto' \
-	4 'GitLab' 		'Versionador Remoto' \
-	5 'Subversion'	'Versionador Remoto' \
-	6 'Bitbucket'	'Versionador Remoto'
+	1 'Git' 					'Ferramenta de Versionamento em modo texto' \
+	2 'GitKraken'				'Interface grafica para o git' \
+	3 'GitHub' 					'Versionador Remoto' \
+	4 'GitLab' 					'Versionador Remoto' \
+	5 'Subversion'				'Versionador Remoto' \
+	6 'Bitbucket'				'Versionador Remoto'
 }
 
 
 function SDKs() {
 
 	GenericSoftwareInstall \
-	1 'Java SDK' 		'Kit de Desenvolvimento Java' \
-	2 'Android SDK' 	'Kit de Desenvolvimento Android' \
-	3 'Python SDK' 		'Kit de Desenvolvimento Python' \
-	4 'DotNet Core SDK'	'Kit de Desenvolvimento DotNet Core' \
-	5 'Kotlin SDK'		'Kit de Desenvolvimento Kotlin' \
-	6 'Node SDK'		'Kit de Desenvolvimento Node'
+	1 'Java SDK' 				'Kit de Desenvolvimento Java' \
+	2 'Android SDK' 			'Kit de Desenvolvimento Android' \
+	3 'Python SDK' 				'Kit de Desenvolvimento Python' \
+	4 'DotNet Core SDK'			'Kit de Desenvolvimento DotNet Core' \
+	5 'Kotlin SDK'				'Kit de Desenvolvimento Kotlin' \
+	6 'Node SDK'				'Kit de Desenvolvimento Node'
 }
 
 
 function Navegadores() {
 
 	GenericSoftwareInstall \
-	1 'Chrome' 						'Navegador Proprietário' \
-	2 'Chromium' 					'Navegador Livre' \
-	3 'Firefox' 					'Navegador Livre' \
- 	4 'Opera' 						'Navegador Proprietário' \
-	5 'Vivaldi' 					'Navegador Livre' \
-	6 'Tor' 						'Navegador Livre' \
-	7 'Epiphany' 					'Navegador Livre' \
-	8 'Links' 						'Navegador em modo texto'
-	
+	1 'Chrome' 					'Navegador Proprietário' \
+	2 'Chromium' 				'Navegador Livre' \
+	3 'Firefox' 				'Navegador Livre' \
+ 	4 'Opera' 					'Navegador Proprietário' \
+	5 'Vivaldi' 				'Navegador Livre' \
+	6 'Tor' 					'Navegador Livre' \
+	7 'Epiphany' 				'Navegador Livre' \
+	8 'Links' 					'Navegador em modo texto'
 }
+
 
 function Virtualizacao() {
 
 	GenericSoftwareInstall \
-	1 'Docker' 						'Tecnologia de Containers' \
-	2 'VM Ware' 					'Tecnologia Hyper-v' \
-	3 'VirtualBox'					'Tecnologia Hyper-v'
-
+	1 'Docker' 					'Tecnologia de Containers' \
+	2 'VM Ware' 				'Tecnologia Hyper-v' \
+	3 'VirtualBox'				'Tecnologia Hyper-v'
 }
 
-# ---------------------------------------- INSTALAÇÕES DE SOFTWARES ------------------------------------ #
+
+# ---------------------------------------- SOFTWARES INSTALLER --------------------------------------#
 function Android_Studio_Install() {
 	echo "$PASSWORD" | sudo -S flatpak install flathub com.google.AndroidStudio -y
 }
@@ -469,6 +478,10 @@ function InteliJ_Install() {
 
 function PyCharm_Install() {
 	echo "$PASSWORD" | sudo -S flatpak install flathub com.jetbrains.PyCharm-Community -y
+}
+
+function PhpStorm_Install() {
+	echo "$PASSWORD" | sudo -S snap install phpstorm
 }
 
 function MonoDevelop_Install() {
@@ -627,10 +640,9 @@ function VirtualBox_Install() {
 	echo "$PASSWORD" | sudo -S  -y
 }
 
-# ----------------------------------------------- EXECUÇÃO ------------------------------------------ #
+# ----------------------------------------------- EXECUÇÃO ------------------------------------------#
 Password
 Welcome
 (IdentifyPackageInstall) | ZenityProgress 'Snap e Flatpak'
 ProgramMain
-
-#-----------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------#
