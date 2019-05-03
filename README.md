@@ -24,8 +24,14 @@ Development Tools Installer é um script gráfico desenvolvido em zanity com o o
 
 [Luciano Brito](https://github.com/LucianoAparecidoBritoGuedes/)
 
+Brasileiro, casado, nascido em 1992. Apaixonado por tecnologias e open source. Formado pela Universidade Paulista (UNIP) em 2019.
+
+
+## Contacts
+
 - [LinkeIn](https://www.linkedin.com/in/luciano-brito-76379374/)
 - [Gmail](lucianobrito.dev@gmail.com)
+
 
 ## Donates
 
