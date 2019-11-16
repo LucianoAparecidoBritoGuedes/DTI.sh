@@ -49,10 +49,13 @@
 #----------------------------------------------------------------------------------------------------#
 #                                            Version: 3                                              #
 #                                                                                                    #
-#                                                                                                    #
-#                                                                                                    #
-#                                                                                                    #
-#                                                                                                    #
+#		- version 3.0 - Reestruturado todo o Código, implementado funções e funcionalidades          #
+#                           implementado testes prévios e posteriores às instalaçoes.                        #
+#                           implementado funções de instalação de componentes para o terminal como:          #
+#                           marcadores de branchs do git e barra de progresso no rodapé do terminal.         #
+#                           Implementado instaladores de inúmeros pacotes em snap e flatpaks                 #
+#                                                                                                            #
+#                                                                                                            #
 #----------------------------------------------------------------------------------------------------#
 # 	Testado em:                                                                                      #
 #   	- bash 4.4.19                                                                                #
