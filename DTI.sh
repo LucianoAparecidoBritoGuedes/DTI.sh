@@ -552,7 +552,7 @@ function SDKs() {
 	4 'Open JDK 8'				'Kit de Desenvolvimento Java 8 Open Source'			"$NATIVE_TYPE_PACKAGE"	\
 	5 'Open JDK 11' 			'Kit de Desenvolvimento Java 11 Open Source'		"$NATIVE_TYPE_PACKAGE"	\
 	6 'Kotlin SDK'				'Kit de Desenvolvimento Kotlin'						"$SNAP" 				\
-	7 'Node SDK'				'Kit de Desenvolvimento Node'						"$SNAP" 				\
+	7 'Node SDK'				'Kit de Desenvolvimento Node e Instalador NPM'		"$SNAP" 				\
 	8 'Openstack SDK'			'Kit de Desenvolvimento Python3 para OpenStack'		"$NATIVE_TYPE_PACKAGE"	\
 	9 'Ubuntu SDK' 				'Kit de Desenvolvimento Ubuntu'						"$NATIVE_TYPE_PACKAGE"
 }
