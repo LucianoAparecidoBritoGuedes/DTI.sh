@@ -9,7 +9,7 @@ Development Tools Installer é um script gráfico desenvolvido em zanity com o o
 
  Sua função é automatizar instalações de diversas ferramentas utilizadas do desenvolvimento de sistemas. Dentre elas podemos citar:
 
-- IDEs como: Android Studio, Eclipse, NetBeans, IDEA Community, WebStorm, PhpStorm, PyCharm Community,Rider, GoLand, RubyMine;
+- IDEs como: Android Studio, Eclipse, NetBeans, IDEA Community, WebStorm, PhpStorm, PyCharm Community, Rider, GoLand, RubyMine;
 - Editores de código como: Atom, Brackets, Sublime-Text, VS Code, Vim;
 - SGBDs como: MySQL, MariaDB, PostgreSQL, MongoDB e também servidor XAMPP;
 - Ferramentas de Modelagem de Dados como: DataGrip, DBeaver Community, MySQL-Workbench, PGAdmin 4;
@@ -18,7 +18,8 @@ Development Tools Installer é um script gráfico desenvolvido em zanity com o o
 - SDKs (Software Development Kit) como: JDK, Android SDK, DotNet Core SDK, Kotlin SDK, Node SDK, Ubuntu SDK, Openstack SDK, Openjdk 8 e openjdk 11 ;
 - Utilitáris de Linha de Comando: Interpretador de comandos Microsoft Power Shell, Interpretador de comandos ZSH, Fast, Speedtest-CLI; e,
 - Versionadores de Código como: Git, Subversion e ferramentas de automação como: GitKraken, BitBucket e GitHub.
-
+- Ferramentas de personalização do sistema como: Grub-Customizer, Pacotes de Icones e GTK, Modificadores do Bash, Modificadores do Gerenciador de pacotes Nemo;
+- Kit de pacotes básicos como: gnome-system-monitor, gnome-disks, gparted, timeshift, brasero, clipgrab, transmission, mailspring, thunderbird, vlc, parole, audacity, spotify, transmageddon, converseen, inkscape, gimp, krita, obs-studio, libreoffice, wps-office, goldendictionary, bible time, team viewer, whatsapp-desktop, telegram, dropbox, wine, playonlinux e steam.
 
 ## Contributors
 
